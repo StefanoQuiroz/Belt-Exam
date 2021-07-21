@@ -1,0 +1,35 @@
+###GET ALL PROJECTS
+GET http://localhost:8000/api/project
+
+###GET A SINGE PROJECT
+GET http://localhost:8000/api/project/60f8aa7a5c00997360763a87
+
+###CREATE A NEW PROJECT WITH ERROS
+POST http://localhost:8000/api/project/new
+Content-Type: application/json
+
+{
+    "project" : "Ta",
+    "dueDate" : "2021-07-21"
+}
+
+###CREATE A NEW PROJECT
+POST http://localhost:8000/api/project/new
+Content-Type: application/json
+
+{
+    "project" : "Learn to fly",
+    "dueDate" : "2021-07-21"
+}
+###UPDATE A PROJECT
+PUT http://localhost:8000/api/project/update/60f8aaea5c00997360763a8f
+Content-Type: application/json
+
+{
+    "project" : "Paint Fence",
+    "dueDate" : "2021-07-22"
+}
+
+###DELETE AN PROJECT
+DELETE http://localhost:8000/api/project/delete/60f8aaea5c00997360763a8f
+
