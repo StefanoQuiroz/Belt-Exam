@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended:true}));
 
 //routes
 //app.use('/api', require('./routes/animals.routes'));
-//app.use('/api', require('./routes/users.routes'));
+app.use('/api', require('./routes/schema.routers'));
 
 
 app.listen(PORT, ()=>{

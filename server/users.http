@@ -1,0 +1,41 @@
+###GET ALL USERS
+GET http://localhost:8000/api/users
+
+###GET A SINGE USER
+GET http://localhost:8000/api/users/60f8a12e3d45a5644c71ffcc
+
+###CREATE A NEW USER
+POST http://localhost:8000/api/users/new
+Content-Type: application/json
+
+{
+    "userName" : "Student",
+    "email" : "student@gmail.com", 
+    "password" : "12345",
+    "confirmPassword" : "12345"
+}
+
+###UPDATE AN USER
+PUT http://localhost:8000/api/users/update/60f8a12e3d45a5644c71ffcc
+Content-Type: application/json
+
+{
+    "userName" : "User",
+    "email" : "user@gmail.com", 
+    "password" : "123456",
+    "confirmPassword" : "123456"
+}
+
+###DELETE AN USER
+DELETE http://localhost:8000/api/users/delete/60f8a12e3d45a5644c71ffcc
+
+###login
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+    "email" : "user@gmail.com",
+    "password": "12345"
+}
+
+
