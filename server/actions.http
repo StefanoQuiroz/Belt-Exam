@@ -1,0 +1,31 @@
+###GET ALL USERS
+GET http://localhost:8000/api/animales
+
+###GET A SINGE USER
+GET http://localhost:8000/api/animales/60f1daed45c7dc22a80b9807
+
+###CREATE A NEW USER
+POST http://localhost:8000/api/animales/new
+Content-Type: application/json
+
+{
+    "nombre" : "Zé Carioca",
+    "tipo" : "Loro", 
+    "color" : "Verde-amarelo",
+    "tamanho" : "Pequenho"
+}
+
+###uPDATE AN ANIMAL
+PUT http://localhost:8000/api/animales/update/60ef68e75788f9013c2245d8
+Content-Type: application/json
+
+{
+    "nombre" : "Firulais I",
+    "tipo" : "Perro", 
+    "color" : "Gris",
+    "tamanho" : "Grande"
+}
+
+###DELETE AN ANIMAL
+DELETE http://localhost:8000/api/animales/delete/60f11acec1ba294fa015a254
+
