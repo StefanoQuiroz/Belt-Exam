@@ -60,14 +60,14 @@ const Register = (props) => {
                     <h1>Register</h1>
                 </Row>
                 <FormGroup row style={{padding: '1rem'}}>
-                    <Label for="nombre" sm={4}>Nombre del Usuario</Label>
+                    <Label for="nombre" sm={4}>Username</Label>
                     <Col sm={8}>
                         <Input type="text" name="userName" id="userName" value={input.userName} onChange={onChange} style={{border: '2px solid black'}}/>
                     </Col>
                 </FormGroup>
             
                 <FormGroup row style={{padding: '1rem'}}>
-                    <Label for="email" sm={4}>Email del Usuario</Label>
+                    <Label for="email" sm={4}>Email</Label>
                     <Col sm={8}>
                         <Input type="email" name="email" id="email" value={input.email} onChange={onChange} style={{border: '2px solid black'}}/>
                     </Col>
