@@ -18,13 +18,7 @@ const PMList = (props) => {
     const [inProgress, setInProgress] = useState([]);
     const [completed, setCompleted] = useState([]);
 
-    //igualalar el arreglo backLog al data y de ahi PUSHEARLOS
-    //HACER UN MAP PARA LA TABLA
-    //IMPLEMENTAR EL LOGIN Y REGISTER
-    //VALIDACIONES
-    //Y SUBIRLO
-    /* setBackLog(data)
-    console.log(backLog); */
+   
     console.log(data);
     const startProject = (event, id) => {
         axios.get(`/api/project/${id}`)
