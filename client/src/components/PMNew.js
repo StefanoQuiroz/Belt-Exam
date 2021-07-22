@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import Swal from 'sweetalert2';
 
 const PMNew = (props) => {
@@ -53,37 +53,33 @@ const PMNew = (props) => {
     const {project, dueDate} = input;
 
     return (
-        <Row>
-            <Row>
-            </Row>
-            <Form onSubmit={onSubmit}>
-                <Row form>
-                    <Col md={6}>
-                        <h1>Project Manager</h1>
-                        <Link style={{float:'right'}} to="/">Back to Dashboard</Link>
-                        <p style={{float:'left'}}>Plan a new project</p>
-                        <FormGroup>
-                            <Label for="proy">Project</Label>
-                            <Input type="text" name="project" id="proy" value={project} onChange={onChange}/>
-                            {(project.length > 0 && project.length<3)&&<p>The project Name must be 3 character or longer</p>}              
-                        </FormGroup>    
-                    </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="date">Due Date</Label>
-                            <Input type="datetime-local" name="dueDate" id="date" value={dueDate} onChange={onChange}/>
-                            {dueDate && <p>Enter a date please</p>}              
-                        </FormGroup>    
-                    </Col>
+        <Container style={{padding:'1.5rem'}}>
+            <Link style={{float:'right'}} to="/">Back to Dashboard</Link>
+            <Form onSubmit={onSubmit}  style={{border:'2px solid black', marginTop:'1.5rem', padding:'0.5rem'}}>
+                <Row>
+                    <h2 style={{textAlign: 'left'}}>Plan a new project</h2>
                 </Row>
-                <Row form>
-                    <Col md={6}>
-                        <Button type="submit">Plan Project</Button>
+                <FormGroup row style={{padding: '1rem'}}>
+                    <Label for="proy" sm={4} style={{fontWeight:'600'}}>Project</Label>
+                    <Col sm={8}>
+                        <Input type="text" name="project" id="proy" value={project} onChange={onChange} style={{border: '2px solid black'}}/>
+                        {(project.length > 0 && project.length<3)&&<p style={{color:'red', fontSize:'1.3rem'}}>The project name must be 3 character or longer</p>}              
                     </Col>
-                </Row>   
+                </FormGroup>    
+                <FormGroup row style={{padding: '1rem'}}>
+                    <Label for="date" sm={4} style={{fontWeight:'600'}}>Due Date</Label>
+                    <Col sm={8}>
+                        <Input type="datetime-local" name="dueDate" id="date" value={dueDate} onChange={onChange} style={{border: '2px solid black'}}/>
+                        {dueDate && <p style={{color:'red', fontSize:'1.3rem'}}>Enter a date please</p>}              
+                    </Col>
+                </FormGroup>
+                <FormGroup row style={{padding: '1rem'}}>
+                    <Col xs>
+                        <Button size='lg' style={{backgroundColor: '#6495ED', width:'100%', color:'#000' , fontWeight:'bold', border:'2px solid black'}} type="submit" >Register</Button>
+                    </Col>
+                </FormGroup>        
             </Form>
-            
-        </Row>
+        </Container>
     );
 }
 

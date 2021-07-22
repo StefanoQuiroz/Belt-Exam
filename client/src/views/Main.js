@@ -42,7 +42,12 @@ const Main = () => {
                         </Row>
                     </Route>
                     <Route path={`/projects/new`}>
-                        <PMNew data={data} setData={setData}/>
+                        <Row>
+                            <h1>Project Manager</h1>
+                            <Col md={6}>
+                                <PMNew data={data} setData={setData}/>
+                            </Col>
+                        </Row>
                     </Route>
                     <Route path={`/`}>
                         <PMList data={data} setData={setData}/>
