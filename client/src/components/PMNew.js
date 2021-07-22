@@ -62,14 +62,14 @@ const PMNew = (props) => {
                 <FormGroup row style={{padding: '1rem'}}>
                     <Label for="proy" sm={4} style={{fontWeight:'600'}}>Project</Label>
                     <Col sm={8}>
-                        <Input type="text" name="project" id="proy" value={project} onChange={onChange} style={{border: '2px solid black'}}/>
+                        <Input type="text" name="project" id="proy" value={project} onChange={onChange} style={{border: '2px solid black'}} required/>
                         {(project.length > 0 && project.length<3)&&<p style={{color:'red', fontSize:'1.3rem'}}>The project name must be 3 character or longer</p>}              
                     </Col>
                 </FormGroup>    
                 <FormGroup row style={{padding: '1rem'}}>
                     <Label for="date" sm={4} style={{fontWeight:'600'}}>Due Date</Label>
                     <Col sm={8}>
-                        <Input type="date" name="dueDate" id="date" value={dueDate} onChange={onChange} style={{border: '2px solid black'}}/>            
+                        <Input type="date" name="dueDate" id="date" value={dueDate} onChange={onChange} style={{border: '2px solid black'}} required/>            
                     </Col>
                 </FormGroup>
                 <FormGroup row style={{padding: '1rem'}}>
