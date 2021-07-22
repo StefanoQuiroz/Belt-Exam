@@ -18,8 +18,8 @@ POST http://localhost:8000/api/project/new
 Content-Type: application/json
 
 {
-    "project" : "Learn to fly",
-    "dueDate" : "2021-07-21"
+    "project" : "Travell to Sao Paulo",
+    "dueDate" : "2021-07-22"
 }
 ###UPDATE A PROJECT
 PUT http://localhost:8000/api/project/update/60f8aaea5c00997360763a8f

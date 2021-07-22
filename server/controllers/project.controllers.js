@@ -20,7 +20,7 @@ const findSingleProject = (req,res) => {
 }
 
 const createProject = (req,res) => {
-    Project.findOne({project:req.params.project})
+    Project.findOne({project:req.body.project})
         .then(response => {
             if(response){
                 res.json({error: true, message:"The project already exists"})
