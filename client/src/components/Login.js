@@ -41,31 +41,30 @@ const Login = () => {
     }
 
     return (
-        <Container>
-            <Row>
-                <h1>Login</h1>
-            </Row>
-            <Col md={6}>
-                <Form onSubmit={onSubmit}>
-                    <Row>
-                        <Col xs={12}>
-                            <FormGroup>
-                                <Label for="email">Email</Label>
-                                <Input type="text" id="email" name="email" value={login.email} onChange={onChange} required/>
-                            </FormGroup>
-                        </Col>
-                        <Col xs={12}>
-                            <FormGroup>
-                                <Label for="password">Password</Label>
-                                <Input type="password" id="password" name="password" value={login.password} onChange={onChange} required/>
-                            </FormGroup>
-                        </Col>
-                        <Col xs={12}>
-                            <Button type="submit">Login</Button>
-                        </Col>
-                    </Row>       
+        <Container  style={{border:'2px solid black', marginTop:'1.5rem'}}>
+                <Form onSubmit={onSubmit} >
+                    <Row style={{backgroundColor: '#DCDCDC', fontSize: '1.5rem'}}>
+                        <h1>Login</h1>
+                    </Row>
+                        <FormGroup row style={{padding: '1rem'}}>
+                                <Label for="email" sm={4}>Email</Label>
+                                <Col sm={8}>
+                                    <Input type="text" id="email" name="email" value={login.email} onChange={onChange} required style={{border: '2px solid black'}}/>
+                                </Col>
+                        </FormGroup>
+                        <FormGroup row style={{padding: '1rem'}}>
+                                <Label for="password" sm={4}>Password</Label>
+                                <Col sm={8}>
+                                    <Input type="password" id="password" name="password" value={login.password} onChange={onChange} required style={{border: '2px solid black'}}/>
+                                </Col>
+                        </FormGroup>
+                        <FormGroup row style={{padding: '1rem'}}>
+                    <Col xs>
+                        <Button size='lg' style={{backgroundColor: '#6495ED', width:'100%', color:'#000' , fontWeight:'bold', border:'2px solid black'}} type="submit">Login</Button>
+                    </Col>
+                </FormGroup>  
                 </Form>
-            </Col>     
+          {/*   </Col>  */}    
         </Container>
     );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Row, Col, Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import Swal from 'sweetalert2';
 
 const Register = (props) => {
@@ -27,6 +27,11 @@ const Register = (props) => {
                 if(response.data && response.data.data){
                     setUsers(users.concat([response.data.data]));
                     //datos.concat([response.data.data])
+                    Swal.fire({
+                        icon: "success",
+                        title: "Registered",
+                        text: "Registered with success!!"
+                    })
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -45,45 +50,49 @@ const Register = (props) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        crearUsuario(event)
+        crearUsuario(event);
     }
 
     return (
-        <Col md={6}>
+        <Container style={{border:'2px solid black', marginTop:'1.5rem'}}>
             <Form onSubmit={onSubmit}>
-            <Row form>
-                <Col md={6}>
-                    <FormGroup>
-                        <Label for="nombre">Nombre del Usuario</Label>
-                        <Input type="text" name="nombre" id="userName" value={input.userName} onChange={onChange}/>
-                    </FormGroup>
-                </Col>
-                <Col md={6}>
-                    <FormGroup>
-                        <Label for="email">Email del Usuario</Label>
-                        <Input type="email" name="email" id="email" value={input.email} onChange={onChange}/>
-                    </FormGroup>
-                </Col>
-                <Col md={6}>
-                    <FormGroup>
-                        <Label for="passoword">Password</Label>
-                        <Input type="password" name="password" id="password" value={input.password} onChange={onChange}/>
-                    </FormGroup>
-                </Col>
-                <Col md={6}>
-                    <FormGroup>
-                        <Label for="confPassword">Confirm Password</Label>
-                        <Input type="password" name="confirmPassword" id="confPassword" value={input.confirmPassword} onChange={onChange}/>
-                    </FormGroup>
-                </Col>
-                </Row>             
-                <Row form>
-                    <Col>
-                        <Button style={{margin:'2px'}} type="submit">Register</Button>
+                <Row style={{backgroundColor: '#DCDCDC', fontSize: '1.5rem'}}>
+                    <h1>Register</h1>
+                </Row>
+                <FormGroup row style={{padding: '1rem'}}>
+                    <Label for="nombre" sm={4}>Nombre del Usuario</Label>
+                    <Col sm={8}>
+                        <Input type="text" name="userName" id="userName" value={input.userName} onChange={onChange} style={{border: '2px solid black'}}/>
                     </Col>
-                </Row>             
+                </FormGroup>
+            
+                <FormGroup row style={{padding: '1rem'}}>
+                    <Label for="email" sm={4}>Email del Usuario</Label>
+                    <Col sm={8}>
+                        <Input type="email" name="email" id="email" value={input.email} onChange={onChange} style={{border: '2px solid black'}}/>
+                    </Col>
+                </FormGroup>
+            
+                <FormGroup row style={{padding: '1rem'}}>
+                    <Label for="passoword" sm={4}>Password</Label>
+                    <Col sm={8}>
+                        <Input type="password" name="password" id="password" value={input.password} onChange={onChange} style={{border: '2px solid black'}}/>
+                    </Col>
+                </FormGroup>
+            
+                <FormGroup row style={{padding: '1rem'}}>
+                    <Label for="confPassword" sm={4}>Confirm Password</Label>
+                    <Col sm={8}>
+                        <Input type="password" name="confirmPassword" id="confPassword" value={input.confirmPassword} onChange={onChange} style={{border: '2px solid black'}}/>
+                    </Col>
+                </FormGroup>
+                <FormGroup row style={{padding: '1rem'}}>
+                    <Col xs>
+                        <Button size='lg' style={{backgroundColor: '#6495ED', width:'100%', color:'#000' , fontWeight:'bold', border:'2px solid black'}} type="submit">Register</Button>
+                    </Col>
+                </FormGroup>  
             </Form>
-        </Col>
+        </Container>
     );
 }
 

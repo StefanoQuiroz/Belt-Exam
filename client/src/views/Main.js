@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { Container } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import PMNew from '../components/PMNew';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -31,8 +31,15 @@ const Main = () => {
             <Router>
                 <Switch>
                     <Route path={`/sign_in`}>
-                        <Login/>
-                        <Register users={users} setUsers={setUsers}/>
+                        <Row>
+                            <h1>Project Manager</h1>
+                            <Col xs>
+                                <Register users={users} setUsers={setUsers}/>
+                            </Col>
+                            <Col xs>
+                                <Login/>
+                            </Col>
+                        </Row>
                     </Route>
                     <Route path={`/projects/new`}>
                         <PMNew data={data} setData={setData}/>
