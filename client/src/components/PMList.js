@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Row, Col, Button } from 'reactstrap';
 import { BsXCircleFill, BsChevronRight } from "react-icons/bs";
 import { useHistory } from 'react-router-dom';
@@ -11,17 +11,50 @@ const PMList = (props) => {
         history.push("/projects/new")
     }
 
+    const dashBoard = (event) => {
+        history.push("/")
+    }
 
     const {datos, setDatos} = props;
    
-    //const [backLog, setBackLog] = useState([]);
+    const [backLog, setBackLog] = useState([]);
+    useEffect(()=>{
+        axios.get("/api/project")
+            .then(response => setBackLog(response.data.data))
+            .catch(err => Swal.fire({
+                icon: "error",
+                title: "Loading error data",
+                text: "An error occurred to loading data"
+            }))
+    },[])
+
     const [inProgress, setInProgress] = useState([]);
     const [completed, setCompleted] = useState([]);
 
    
-    const startProject = (event, id) => {
+    /* const startProject = (event, id) => {
+
         axios.get(`/api/project/${id}`)
-            .then(response => setInProgress(response.data.data))
+            //.then(response => setInProgress(inProgress.concat([response.data.data])))
+            .catch(err => Swal.fire({
+                icon: "error",
+                title: "Loading error in one project - start",
+                text: "An error occurred while find only a project - Progress"
+            }))
+    } */
+
+    const startProject = (event, id) => {
+        axios.put(`/api/project/update/${id}`, backLog)
+            //.then(response => setInProgress(inProgress.concat([response.data.data])))
+            //.then(response => setInProgress(response.data.data))
+            .then(response => {
+                const index = backLog.findIndex( objeto => objeto._id === id);
+                backLog.splice(index, 1);
+                setInProgress(inProgress.concat([response.data.data]))
+                setBackLog(backLog);
+                dashBoard(event);
+                
+            })
             .catch(err => Swal.fire({
                 icon: "error",
                 title: "Loading error in one project - start",
@@ -29,9 +62,17 @@ const PMList = (props) => {
             }))
     }
 
+    console.log(inProgress);
+
     const moveToCompleted = (event, id) => {
-        axios.get(`/api/project/${id}`)
-        .then(response => setCompleted(response.data.data))
+        axios.put(`/api/project/update/${id}`, inProgress)
+        .then(response => {
+            const index = inProgress.findIndex( objeto => objeto._id === id);
+            inProgress.splice(index, 1);
+            setCompleted(completed.concat([response.data.data]))
+            setInProgress(inProgress);
+            dashBoard(event);
+        })
         .catch(err => Swal.fire({
             icon: "error",
             title: "Loading error in one project - move",
@@ -49,8 +90,12 @@ const PMList = (props) => {
             if(result.value) {
                 axios.delete(`/api/project/delete/${id}`)
                 .then(resp => {
-                    const project = props.datos.filter(a => a._id !== id);
-                    setDatos(project); 
+                    const index = completed.findIndex( objeto => objeto._id === id);
+                    completed.splice(index, 1);
+                    setCompleted(completed);
+                    const objeto = props.datos.filter(a => a._id !== id);
+                    setDatos(objeto);
+                    dashBoard(event); 
                 }).catch(error => Swal.fire({
                     icon: "error",
                     title: "Remove Error",
@@ -72,7 +117,7 @@ const PMList = (props) => {
                         </tr>
                     </thead>
                     <tbody>   
-                            {datos&&datos.map((items, index)=>(
+                            {backLog&&backLog.map((items, index)=>(
                             <tr key={index} >
                                 <td style={{border:'2px solid black'}}>
                                     <h5><b>{items.project}</b></h5>
@@ -96,10 +141,10 @@ const PMList = (props) => {
                     <tbody>
                         {inProgress&&inProgress.map((items, index)=>(
                         <tr key={index}>
-                            <td>
+                            <td style={{border:'2px solid black'}}>
                                 <h5>{items.project}</h5>
                                 <p>{items.dueDate}</p>
-                                <Button onClick={(event)=>moveToCompleted(event, items._id)}>Move To Completed</Button>
+                                <Button onClick={(event)=>moveToCompleted(event, items._id)} block size='lg' style={{width:'100%', backgroundColor:'#7fbf7f', border:'none', color:'black', fontWeight:'500'}}>Move To Completed <BsChevronRight style={{float:'right', fontSize:'1.6rem'}}/></Button>
                             </td>
                         </tr>
                         ))}
@@ -116,10 +161,10 @@ const PMList = (props) => {
                     <tbody>
                         {completed&&completed.map((items, index)=>(
                         <tr key={index}>
-                            <td>
+                            <td style={{border:'2px solid black'}}>
                                 <h5>{items.project}</h5>
                                 <p>{items.dueDate}</p>
-                                <Button onClick={(event)=>removeProject(event, items._id)}>Remove Project</Button>
+                                <Button onClick={(event)=>removeProject(event, items._id)} block size='lg' style={{width:'100%', backgroundColor:'#ff6666', border:'none', color:'black', fontWeight:'500'}}>Remove Project <BsChevronRight style={{float:'right', fontSize:'1.6rem'}}/></Button>
                             </td>
                         </tr>
                         ))}

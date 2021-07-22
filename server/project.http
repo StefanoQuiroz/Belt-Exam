@@ -2,7 +2,7 @@
 GET http://localhost:8000/api/project
 
 ###GET A SINGE PROJECT
-GET http://localhost:8000/api/project/60f8aa7a5c00997360763a87
+GET http://localhost:8000/api/project/60f99e8dcde2bc48f0808b67
 
 ###CREATE A NEW PROJECT WITH ERROS
 POST http://localhost:8000/api/project/new
