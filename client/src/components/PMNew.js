@@ -33,8 +33,8 @@ const PMNew = (props) => {
                 } else {
                     Swal.fire({
                         icon: "error",
-                        title: "Create Project Error - 1",
-                        text: response.data.message.error
+                        title: "Plan a new project",
+                        text: response.data.message
                     })
                 }
             })
@@ -69,13 +69,12 @@ const PMNew = (props) => {
                 <FormGroup row style={{padding: '1rem'}}>
                     <Label for="date" sm={4} style={{fontWeight:'600'}}>Due Date</Label>
                     <Col sm={8}>
-                        <Input type="datetime-local" name="dueDate" id="date" value={dueDate} onChange={onChange} style={{border: '2px solid black'}}/>
-                        {dueDate && <p style={{color:'red', fontSize:'1.3rem'}}>Enter a date please</p>}              
+                        <Input type="date" name="dueDate" id="date" value={dueDate} onChange={onChange} style={{border: '2px solid black'}}/>            
                     </Col>
                 </FormGroup>
                 <FormGroup row style={{padding: '1rem'}}>
                     <Col xs>
-                        <Button size='lg' style={{backgroundColor: '#6495ED', width:'100%', color:'#000' , fontWeight:'bold', border:'2px solid black'}} type="submit" >Register</Button>
+                        <Button size='lg' style={{backgroundColor: '#6495ED', width:'100%', color:'#000' , fontWeight:'bold', border:'2px solid black'}} type="submit" >Plan Project</Button>
                     </Col>
                 </FormGroup>        
             </Form>
