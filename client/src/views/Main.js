@@ -8,18 +8,18 @@ import PMList from '../components/PMList';
 import Login from '../components/Login';
 import Register from '../components/Register';
 const Main = () => {
-    const [data, setData] = useState([]);
+    const [datos, setDatos] = useState([]);
     const [users, setUsers] = useState([]);
     useEffect(()=>{
         axios.get("/api/project")
-            .then(response => setData(response.data.data))
+            .then(response => setDatos(response.data.data))
             .catch(err => Swal.fire({
                 icon: "error",
                 title: "Project Error",
                 text: "Error in loading the data from projects"
             }))
         axios.get("/api/users")
-            .then(response => setData(response.data.data))
+            .then(response => setUsers(response.data.data))
             .catch(err => Swal.fire({
                 icon: "error",
                 title: "Users Error",
@@ -45,12 +45,12 @@ const Main = () => {
                         <Row>
                             <h1>Project Manager</h1>
                             <Col md={6}>
-                                <PMNew data={data} setData={setData}/>
+                                <PMNew datos={datos} setDatos={setDatos}/>
                             </Col>
                         </Row>
                     </Route>
                     <Route path={`/`}>
-                        <PMList data={data} setData={setData}/>
+                        <PMList datos={datos} setDatos={setDatos}/>
                     </Route>
                 </Switch>
             </Router>

@@ -12,14 +12,13 @@ const PMList = (props) => {
     }
 
 
-    const {data, setData} = props;
+    const {datos, setDatos} = props;
    
     //const [backLog, setBackLog] = useState([]);
     const [inProgress, setInProgress] = useState([]);
     const [completed, setCompleted] = useState([]);
 
    
-    console.log(data);
     const startProject = (event, id) => {
         axios.get(`/api/project/${id}`)
             .then(response => setInProgress(response.data.data))
@@ -51,7 +50,7 @@ const PMList = (props) => {
                 axios.delete(`/api/project/delete/${id}`)
                 .then(resp => {
                     const project = props.datos.filter(a => a._id !== id);
-                    setData(project); 
+                    setDatos(project); 
                 }).catch(error => Swal.fire({
                     icon: "error",
                     title: "Remove Error",
@@ -65,31 +64,33 @@ const PMList = (props) => {
     return (
         <Row>
             <h1>Project Manager</h1> 
-            <Col xs>
+            <Col xs style={{border:'2px solid black', borderSize:'border-box', margin:'0.03rem', padding:'0'}}>
                 <Table>
                     <thead>
                         <tr>
-                            <th>Backlog</th>
+                            <th style={{backgroundColor:'#87ceeb', border:'1px solid black'}}>Backlog</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {data&&data.map((items, index)=>(
-                        <tr key={index}>
-                            <td>
-                                <h5>{items.project}</h5>
-                                <p>{items.dueDate}</p>
-                                <Button onClick={(event)=>startProject(event, items._id)}>Start Project</Button>
-                            </td>
-                        </tr>
-                        ))}
+                    <tbody>   
+                            {datos&&datos.map((items, index)=>(
+                            <tr key={index} >
+                                <td style={{border:'2px solid black'}}>
+                                    <h5><b>{items.project}</b></h5>
+                                    <p>Due: {items.dueDate}</p>
+                                    <Button onClick={(event)=>startProject(event, items._id)}>Start Project</Button>
+                                </td>
+                            </tr>
+                            ))}
                     </tbody>
-                </Table>
+                    
+                </Table> 
+                
             </Col>
-            <Col xs>
+            <Col xs style={{border:'2px solid black', borderSize:'border-box', margin:'0.03rem', padding:'0'}}>
                 <Table>
                     <thead>
                         <tr>
-                            <th>In Progress</th>
+                            <th style={{backgroundColor:'#fed48b'}}>In Progress</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,11 +106,11 @@ const PMList = (props) => {
                     </tbody>
                 </Table>
             </Col>
-            <Col xs>
+            <Col xs style={{border:'2px solid black', borderSize:'border-box', margin:'0.03rem', padding:'0'}}>
                 <Table>
                     <thead>
                         <tr>
-                            <th>Completed</th>
+                            <th style={{backgroundColor:'#7fbf7f'}}>Completed</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -125,7 +126,7 @@ const PMList = (props) => {
                     </tbody>
                 </Table>
             </Col>
-            <Row>
+            <Row style={{margin:' 2rem'}}>
                 <Col md={4}>
                     <Button onClick={(event) => pmNew(event)}><BsXCircleFill style={{margin:'0.2rem'}}/>Add New Project</Button>           
                 </Col>

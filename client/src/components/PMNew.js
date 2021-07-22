@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const PMNew = (props) => {
     const history = useHistory()
-    const {data, setData} = props
+    const {datos, setDatos} = props
     const [input, setInput] = useState({
         project: "",
         dueDate: new Date()
@@ -28,8 +28,8 @@ const PMNew = (props) => {
         axios.post("/api/project/new", input)
             .then(response => {
                 if(response.data&&response.data.data){
+                    setDatos(datos.concat([response.data.data]));
                     home(event);
-                    setData(data.concat([response.data.data]));
                 } else {
                     Swal.fire({
                         icon: "error",
