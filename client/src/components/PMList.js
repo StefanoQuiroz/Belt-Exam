@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Row, Col, Button } from 'reactstrap';
-import { BsXCircleFill } from "react-icons/bs";
+import { BsXCircleFill, BsChevronRight } from "react-icons/bs";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -77,7 +77,7 @@ const PMList = (props) => {
                                 <td style={{border:'2px solid black'}}>
                                     <h5><b>{items.project}</b></h5>
                                     <p>Due: {items.dueDate}</p>
-                                    <Button onClick={(event)=>startProject(event, items._id)}>Start Project</Button>
+                                    <Button onClick={(event)=>startProject(event, items._id)} block size='lg' style={{width:'100%', backgroundColor:'#fed48b', border:'none', color:'black', fontWeight:'500'}}>Start Project<BsChevronRight style={{float:'right', fontSize:'1.6rem'}}/></Button>
                                 </td>
                             </tr>
                             ))}
