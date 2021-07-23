@@ -9,8 +9,8 @@ const ProjectSchema = new mongoose.Schema({
     dueDate: {
         type: String,
         required : [true, "Due Date is required"]
-    }
-    
+    },
+    status: String
 }, {timestamps:true});
 
 

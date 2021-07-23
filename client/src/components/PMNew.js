@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const PMNew = (props) => {
     const history = useHistory()
-    const {datos, setDatos} = props
+    //const {datos, setDatos} = props
     const [input, setInput] = useState({
         project: "",
         dueDate: new Date()
@@ -21,14 +21,15 @@ const PMNew = (props) => {
     }
 
     const home = (event) => {
-        history.push("/")
+        history.push("/projects")
     }
 
     const createProject = (event) => {
         axios.post("/api/project/new", input)
             .then(response => {
                 if(response.data&&response.data.data){
-                    setDatos(datos.concat([response.data.data]));
+                    props.setActualizar(props.actualizar+1)
+                    //setDatos(datos.concat([response.data.data]));
                     home(event);
                 } else {
                     Swal.fire({

@@ -2,7 +2,7 @@ const Project = require('../models/projects.models');
 
 
 const findProject = (req,res) => {
-    Project.find({})
+    Project.find({status: req.params.status})
         .then(result => res.json({data:result}))
         .catch(error => {
             res.json({error:error, message:"Something went wrong"});
@@ -25,6 +25,8 @@ const createProject = (req,res) => {
             if(response){
                 res.json({error: true, message:"The project already exists"})
             } else {
+                const project = req.body;
+                project.status= 'BACKLOG'
                 Project.create(req.body)
                     .then(result => res.json({data:result}))
                     .catch(error => {

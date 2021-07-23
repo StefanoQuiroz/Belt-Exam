@@ -12,24 +12,39 @@ const PMList = (props) => {
     }
 
     const dashBoard = (event) => {
-        history.push("/")
+        history.push("/projects")
     }
 
     const {datos, setDatos} = props;
    
     const [backLog, setBackLog] = useState([]);
+    const [inProgress, setInProgress] = useState([]);
+    const [completed, setCompleted] = useState([]);
+
     useEffect(()=>{
-        axios.get("/api/project")
+        axios.get("/api/project/BACKLOG")
             .then(response => setBackLog(response.data.data))
             .catch(err => Swal.fire({
                 icon: "error",
                 title: "Loading error data",
                 text: "An error occurred to loading data"
             }))
-    },[])
+        axios.get("/api/project/IN_PROGRESS")
+            .then(response => setInProgress(response.data.data))
+            .catch(err => Swal.fire({
+                icon: "error",
+                title: "Loading error data",
+                text: "An error occurred to loading data"
+            }))
+        axios.get("/api/project/COMPLETED")
+            .then(response => setCompleted(response.data.data))
+            .catch(err => Swal.fire({
+                icon: "error",
+                title: "Loading error data",
+                text: "An error occurred to loading data"
+            }))
+    },[props.actualizar])
 
-    const [inProgress, setInProgress] = useState([]);
-    const [completed, setCompleted] = useState([]);
 
    
     /* const startProject = (event, id) => {
@@ -44,15 +59,18 @@ const PMList = (props) => {
     } */
 
     const startProject = (event, id) => {
-        axios.put(`/api/project/update/${id}`, backLog)
+        const project = backLog.find(p => p._id === id);
+        project.status= 'IN_PROGRESS'
+        axios.put(`/api/project/update/${id}`, project)
             //.then(response => setInProgress(inProgress.concat([response.data.data])))
             //.then(response => setInProgress(response.data.data))
             .then(response => {
-                const index = backLog.findIndex( objeto => objeto._id === id);
+                props.setActualizar(props.actualizar + 1)
+                /* const index = backLog.findIndex( objeto => objeto._id === id);
                 backLog.splice(index, 1);
                 setInProgress(inProgress.concat([response.data.data]))
                 setBackLog(backLog);
-                dashBoard(event);
+                dashBoard(event); */
                 
             })
             .catch(err => Swal.fire({
@@ -62,16 +80,20 @@ const PMList = (props) => {
             }))
     }
 
-    console.log(inProgress);
+    //console.log(inProgress);
 
     const moveToCompleted = (event, id) => {
-        axios.put(`/api/project/update/${id}`, inProgress)
+        const project = inProgress.find(p => p._id === id);
+        project.status= 'COMPLETED'
+        axios.put(`/api/project/update/${id}`, project)
         .then(response => {
-            const index = inProgress.findIndex( objeto => objeto._id === id);
+            props.setActualizar(props.actualizar + 1)
+            /* const index = inProgress.findIndex( objeto => objeto._id === id);
             inProgress.splice(index, 1);
             setCompleted(completed.concat([response.data.data]))
             setInProgress(inProgress);
-            dashBoard(event);
+            dashBoard(event); */
+            //dashBoard(event);
         })
         .catch(err => Swal.fire({
             icon: "error",

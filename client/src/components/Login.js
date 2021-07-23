@@ -21,7 +21,7 @@ const Login = () => {
     }
 
     const home = (event) => {
-        history.push("/projects/new")
+        history.push("/projects")
     }
 
     const onSubmit = (event) => {

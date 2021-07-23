@@ -8,6 +8,7 @@ import PMList from '../components/PMList';
 import Login from '../components/Login';
 import Register from '../components/Register';
 const Main = () => {
+    const [actualizar, setActualizar]=useState(0);
     const [datos, setDatos] = useState([]);
     const [users, setUsers] = useState([]);
     useEffect(()=>{
@@ -30,7 +31,7 @@ const Main = () => {
         <Container>
             <Router>
                 <Switch>
-                    <Route path={`/sign_in`}>
+                    <Route exact path={`/`}>
                         <Row>
                             <h1>Project Manager</h1>
                             <Col xs>
@@ -45,12 +46,12 @@ const Main = () => {
                         <Row>
                             <h1>Project Manager</h1>
                             <Col md={6}>
-                                <PMNew datos={datos} setDatos={setDatos}/>
+                                <PMNew datos={datos} setDatos={setDatos} actualizar={actualizar} setActualizar={setActualizar}/>
                             </Col>
                         </Row>
                     </Route>
-                    <Route path={`/`}>
-                        <PMList datos={datos} setDatos={setDatos}/>
+                    <Route path={`/projects`}>
+                        <PMList datos={datos} setDatos={setDatos}  actualizar={actualizar} setActualizar={setActualizar}/>
                     </Route>
                 </Switch>
             </Router>
