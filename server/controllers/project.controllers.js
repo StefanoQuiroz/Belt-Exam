@@ -2,7 +2,7 @@ const Project = require('../models/projects.models');
 
 
 const findProject = (req,res) => {
-    Project.find({status: req.params.status})
+    Project.find({status: req.params.status}).sort({dueDate: 1})
         .then(result => res.json({data:result}))
         .catch(error => {
             res.json({error:error, message:"Something went wrong"});

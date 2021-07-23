@@ -46,24 +46,10 @@ const PMList = (props) => {
     },[props.actualizar])
 
 
-   
-    /* const startProject = (event, id) => {
-
-        axios.get(`/api/project/${id}`)
-            //.then(response => setInProgress(inProgress.concat([response.data.data])))
-            .catch(err => Swal.fire({
-                icon: "error",
-                title: "Loading error in one project - start",
-                text: "An error occurred while find only a project - Progress"
-            }))
-    } */
-
     const startProject = (event, id) => {
         const project = backLog.find(p => p._id === id);
         project.status= 'IN_PROGRESS'
         axios.put(`/api/project/update/${id}`, project)
-            //.then(response => setInProgress(inProgress.concat([response.data.data])))
-            //.then(response => setInProgress(response.data.data))
             .then(response => {
                 props.setActualizar(props.actualizar + 1)
                 /* const index = backLog.findIndex( objeto => objeto._id === id);
@@ -139,7 +125,7 @@ const PMList = (props) => {
                         </tr>
                     </thead>
                     <tbody>   
-                            {backLog&&backLog.map((items, index)=>(
+                            {backLog && backLog.map((items, index)=>(
                             <tr key={index} >
                                 <td style={{border:'2px solid black'}}>
                                     <h5><b>{items.project}</b></h5>
@@ -161,7 +147,7 @@ const PMList = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {inProgress&&inProgress.map((items, index)=>(
+                        {inProgress && inProgress.map((items, index)=>(
                         <tr key={index}>
                             <td style={{border:'2px solid black'}}>
                                 <h5>{items.project}</h5>
@@ -181,7 +167,7 @@ const PMList = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {completed&&completed.map((items, index)=>(
+                        {completed && completed.map((items, index)=>(
                         <tr key={index}>
                             <td style={{border:'2px solid black'}}>
                                 <h5>{items.project}</h5>

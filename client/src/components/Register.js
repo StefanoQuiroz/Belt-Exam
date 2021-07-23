@@ -22,7 +22,7 @@ const Register = (props) => {
     }
 
     const crearUsuario = (event) => {
-        axios.post(`http://localhost:8000/api/users/new`, input)
+        axios.post(`/api/users/new`, input)
             .then(response => {
                 if(response.data && response.data.data){
                     setUsers(users.concat([response.data.data]));

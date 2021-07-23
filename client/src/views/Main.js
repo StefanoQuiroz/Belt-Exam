@@ -12,7 +12,7 @@ const Main = () => {
     const [datos, setDatos] = useState([]);
     const [users, setUsers] = useState([]);
     useEffect(()=>{
-        axios.get("/api/project")
+        axios.get("/api/project/BACKLOG")
             .then(response => setDatos(response.data.data))
             .catch(err => Swal.fire({
                 icon: "error",

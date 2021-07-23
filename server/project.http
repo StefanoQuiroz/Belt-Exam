@@ -1,5 +1,11 @@
 ###GET ALL PROJECTS
-GET http://localhost:8000/api/project
+GET http://localhost:8000/api/project/BACKLOG
+
+###GET ALL PROJECTS
+GET http://localhost:8000/api/project/IN_PROGRESS
+
+###GET ALL PROJECTS
+GET http://localhost:8000/api/project/COMPLETED
 
 ###GET A SINGE PROJECT
 GET http://localhost:8000/api/project/60f99e8dcde2bc48f0808b67
