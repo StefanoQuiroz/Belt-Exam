@@ -1,4 +1,4 @@
-# Coding Dojo Belt Exam MERN
+# Kanban Board Full Stack MERN
 
 Kanban Board
 
