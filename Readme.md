@@ -6,54 +6,26 @@ Proyecto de Kanban inspirado en Trello, en el cuál el usuaurio se registra colo
 
 <p align="center">
 
-<img src='https://github.com/StefanoQuiroz/MyOwnChat/blob/main/gif/myOwnChat.gif' width='700px'>
+<img src='https://github.com/StefanoQuiroz/Kanban-Board/blob/main/gif/kanbanBoard.gif' width='700px'>
 
 </p>
 
 # Instrucciones
 
 ```sh
-1. git clone https://github.com/StefanoQuiroz/MyOwnChat.git
-2. cd client
+1. git clone https://github.com/StefanoQuiroz/Kanban-Board.git
+2. npm i
+3. cd client
 3. npm i
-4. npm run start
+4. cd ..
+5. npm run server (para ejecutar el Back-end)
+6. npm run client (para ejecutar el Front-end)
 ```
 
 # Link
 
 <p align="left">
 
-https://chatwsp.web.app/
+http://52.67.28.43/
 
 </p>
-
-
-
-
-
-
-
-
-```sh
-1. git clone https://github.com/StefanoQuiroz/Belt-Exam.git
-2. npm i desde la carpeta Belt-Exam/
-3. cd client
-4. npm i 
-```
-
-# Para ejecutar el server y el client 
-
-Desde la carpeta beltExamMern/
-
-```sh
-npm run server
-npm run client
-```
-
-# Ir a la ruta
-Inicia en localhost:3000 por defecto, donde se muestra el kanban Board
-Redirigirse para el registro y login :
-
-```sh
-localhost:3000/sign_in 
-```
