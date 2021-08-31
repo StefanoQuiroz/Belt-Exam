@@ -77,6 +77,7 @@ const Register = (props) => {
                     <Label for="passoword" sm={4}>Password</Label>
                     <Col sm={8}>
                         <Input type="password" name="password" id="password" value={input.password} onChange={onChange} style={{border: '2px solid black'}}/>
+                        {(input.password.length > 0 && input.password.length < 4) ? <p style={{color: "red"}}>Password must be at least 4 characters</p> : ""} 
                     </Col>
                 </FormGroup>
             
@@ -84,6 +85,7 @@ const Register = (props) => {
                     <Label for="confPassword" sm={4}>Confirm Password</Label>
                     <Col sm={8}>
                         <Input type="password" name="confirmPassword" id="confPassword" value={input.confirmPassword} onChange={onChange} style={{border: '2px solid black'}}/>
+                        {(input.password.length !== input.confirmPassword.length) ? <p style={{color: "red"}}>Passwords must be the same</p> : ""} 
                     </Col>
                 </FormGroup>
                 <FormGroup row style={{padding: '1rem'}}>

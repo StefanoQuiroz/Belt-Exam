@@ -33,7 +33,7 @@ const Main = () => {
                 <Switch>
                     <Route exact path={`/`}>
                         <Row>
-                            <h1>Project Manager</h1>
+                            <h1>Kanban Board</h1>
                             <Col xs>
                                 <Register users={users} setUsers={setUsers}/>
                             </Col>
@@ -44,7 +44,7 @@ const Main = () => {
                     </Route>
                     <Route path={`/projects/new`}>
                         <Row>
-                            <h1>Project Manager</h1>
+                            <h1>Kanban Board</h1>
                             <Col md={6}>
                                 <PMNew datos={datos} setDatos={setDatos} actualizar={actualizar} setActualizar={setActualizar}/>
                             </Col>

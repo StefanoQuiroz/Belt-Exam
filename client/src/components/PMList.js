@@ -116,7 +116,7 @@ const PMList = (props) => {
 
     return (
         <Row>
-            <h1>Project Manager</h1> 
+            <h1>Kanban Board</h1> 
             <Col xs style={{border:'2px solid black', borderSize:'border-box', margin:'0.03rem', padding:'0'}}>
                 <Table>
                     <thead>
