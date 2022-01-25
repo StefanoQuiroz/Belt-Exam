@@ -1,4 +1,7 @@
 ###GET ALL USERS
+GET http://localhost:8000/api/users/count
+
+###GET ALL USERS
 GET http://localhost:8000/api/users
 
 ###GET A SINGE USER

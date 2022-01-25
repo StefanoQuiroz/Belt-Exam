@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const { secretKey } = require('../config/jwt.config');
 
 const findUser = (req,res) => {
-    User.find({})
+    User.find()
         .then(result => res.json({data:result}))
         .catch(error => {
             res.json({error:error, message:"Something went wrong"});
@@ -35,6 +35,18 @@ const createUser = (req,res) => {
                     })
             }
         });
+}
+
+const randomUser = (req, res) => {
+    User
+    .estimatedDocumentCount()
+    .then(docCount => {
+        console.log(docCount)
+        //and do one super neat trick
+    })
+    .catch(err => {
+        //handle possible errors
+    })  
 }
 
 const updateUser = (req,res) => {
@@ -88,4 +100,4 @@ const login = (req, res) => {
          })
 }
 
-module.exports = {findUser, findSingleUser, createUser, updateUser, deleteUser, login};
+module.exports = {findUser, findSingleUser, createUser, randomUser, updateUser, deleteUser, login};
