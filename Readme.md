@@ -26,6 +26,6 @@ Proyecto de Kanban inspirado en Trello, en el cuál el usuaurio se registra colo
 
 <p align="left">
 
-http://52.67.28.43/
+http://18.224.23.223/
 
 </p>
