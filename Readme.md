@@ -1,6 +1,6 @@
 # Kanban Board
 
-Proyecto de Kanban inspirado en Trello, en el cuál el usuaurio se registra colocando sus principales datos, para posteriormente hacer un un login. Luego el usuario crea una tarea específica señalando un tiempo. Aparecerá una tabla con 3 columnas: “Backlog”, “In-Progress" y “Completed”. Luego el usuario podrá mover dicha tarea en cualquiera de las 3 columnas mencionadas.
+Un Kanban inspirado en Trello, en el cuál el usuario se registra colocando sus principales datos, para posteriormente hacer un un login. Luego el usuario crea una tarea específica señalando un tiempo. Aparecerá una tabla con 3 columnas: “Backlog”, “In-Progress" y “Completed”. Luego el usuario podrá mover dicha tarea en cualquiera de las 3 columnas mencionadas simulando el Kanban de tareas.
 
 # Demo
 
